@@ -5,6 +5,7 @@ import UseCase from "../../common/useCase/UseCase";
 import SignCreateAdapterParams from "../domain/DTO/SignCreateAdapterParams.dto";
 import SignCreateUseCaseParams from '../domain/DTO/SignCreateUseCaseParams.dto';
 import { inject, injectable } from 'inversify'
+import Log from '../../../shared/utils/logger/implementation/Log';
 
 @injectable()
 export default class SignCreateAdapter implements Adapter<SignCreateAdapterParams, string> {
@@ -17,7 +18,6 @@ export default class SignCreateAdapter implements Adapter<SignCreateAdapterParam
   }
 
   async execute(signCreateAdapterParams: SignCreateAdapterParams): Promise<string> {
-    console.log('signCreateAdapterParams: ', signCreateAdapterParams)
     return '1'
   }
 }

@@ -13,6 +13,7 @@ import TYPES from '../../../../../src/types';
 const main = middy(async event => {
   const adapter: Adapter<SignCreateAdapterParams, string> = container.get<Adapter<SignCreateAdapterParams, string>>(TYPES.SignCreateAdapter);
   adapter.execute(event.body);
+  // adapter.try()
   return formatJSONResponse(
       '1',
       HttpStatusCode.CREATED
