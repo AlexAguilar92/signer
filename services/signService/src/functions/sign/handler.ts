@@ -5,10 +5,14 @@ import httpResponseHandlerMiddleware from '../../../../../src/middleware/httpRes
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
 import Sign from '../../../../schemas/Sign.schema'
 import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
+import container from 'src/inversify.config';
+import Adapter from '../../../../../src/modules/common/adapter/Adapter';
+import SignCreateAdapterParams from '../../../../../src/modules/sign/domain/DTO/SignCreateAdapterParams.dto';
+import TYPES from '../../../../../src/types';
 
 const main = middy(async event => {
-  // console.log("event", event)
-  // return {data: 1, statusCode: HttpStatusCode.CREATED}
+  const adapter: Adapter<SignCreateAdapterParams, string> = container.get<Adapter<SignCreateAdapterParams, string>>(TYPES.SignCreateAdapter);
+  adapter.execute(event.body);
   return formatJSONResponse(
       '1',
       HttpStatusCode.CREATED
