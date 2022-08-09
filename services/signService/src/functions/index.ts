@@ -1,1 +1,1 @@
-export { default as hello } from './sign';
+export { default as sign } from './sign';

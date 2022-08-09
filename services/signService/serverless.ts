@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import hello from '@functions/sign';
+import sign from '@functions/sign';
 
 const serverlessConfiguration: AWS = {
   service: "${self:custom.service}",
@@ -13,18 +13,18 @@ const serverlessConfiguration: AWS = {
     name: 'aws',
     runtime: 'nodejs14.x',
     apiGateway: {
-      restApiId: '${env:ApiGatewayId}',
-      restApiRootResourceId: '${env:ApiGatewayResource}',
+      restApiId: '${env:ApiGatewayId, "ApiGatewayId"}',
+      restApiRootResourceId: '${env:ApiGatewayResource, "ApiGatewayResource"}',
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
     },
     layers: [
-      "${param:commonLibs}",
+      '${param:commonLibs, "commonLibs"}',
     ],
     deploymentBucket: {
-      name: '${ssm:s3_bucket_deploy_sls, "s3_bucket_deploy_sls"}',
+      name: '${ssm:s3_bucket_deploy_sls, "s3BucketDeploySls"}',
     },
     iam: {
       role: '${env:iamRole, "iamRole"}',
@@ -35,7 +35,7 @@ const serverlessConfiguration: AWS = {
     }, 
   },
   // import the function via paths
-  functions: { hello },
+  functions: { sign },
   package: { 
     individually: true,
     patterns: [

@@ -2,15 +2,15 @@ import { handlerPath } from '@libs/handler-resolver';
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
-  name: '${self:custom.func_prefix}-lambda-name-servicea',
+  name: '${self:custom.func_prefix}-sign',
   events: [
     {
       http: {
         method: 'post',
-        path: '/json/sign',
+        path: '/sign',
         cors: true,
         authorizer: {
-          arn: '${ssm:sso_cognito_arn,"sso_cognito_arn"}',
+          arn: '${ssm:sso_cognito_arn,"ssoCognitoArn"}',
           name: '${self:custom.func_prefix}-authorizer'
         },
       },

@@ -4,13 +4,15 @@ import httpJsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseHandlerMiddleware from '../../../../../src/middleware/httpResponseHandlerMiddleware';
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
 import Sign from '../../../../schemas/Sign.schema'
+import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
 
 const main = middy(async event => {
-  console.log(event)
-  return formatJSONResponse({
-    message: `Hello, welcome to the exciting Serverless world!`,
-    event,
-  });
+  // console.log("event", event)
+  // return {data: 1, statusCode: HttpStatusCode.CREATED}
+  return formatJSONResponse(
+      '1',
+      HttpStatusCode.CREATED
+  );
 });
 
 main
@@ -22,3 +24,7 @@ main
       type: VALIDATOR_TYPE.BODY,
     })
   );
+
+module.exports = {
+  main
+}

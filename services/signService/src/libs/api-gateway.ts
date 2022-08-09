@@ -1,12 +1,8 @@
-import type { APIGatewayProxyEvent, APIGatewayProxyResult, Handler } from "aws-lambda"
-import type { FromSchema } from "json-schema-to-ts";
+import HttpStatusCode from "../../../../src/shared/enums/httpStatusCode";
 
-type ValidatedAPIGatewayProxyEvent<S> = Omit<APIGatewayProxyEvent, 'body'> & { body: FromSchema<S> }
-export type ValidatedEventAPIGatewayProxyEvent<S> = Handler<ValidatedAPIGatewayProxyEvent<S>, APIGatewayProxyResult>
-
-export const formatJSONResponse = (response: Record<string, unknown>) => {
+export const formatJSONResponse = (data, statusCode: HttpStatusCode = HttpStatusCode.OK) => {
   return {
-    statusCode: 200,
-    body: JSON.stringify(response)
+    data,
+    statusCode
   }
 }
