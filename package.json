@@ -5,6 +5,7 @@
   "main": "serverless.ts",
   "scripts": {
     "start": "sls offline start",
+    "serve:watch": "nodemon -e js,ts,jsx,tsx -x yarn run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -39,7 +40,7 @@
     "eslint": "8.15.0",
     "jest": "28.1.0",
     "json-schema-to-ts": "^1.5.0",
-    "nodemon": "^2.0.19",
+    "nodemon": "2.0.19",
     "prettier": "2.6.2",
     "serverless": "^3.15.2",
     "serverless-esbuild": "^1.23.3",

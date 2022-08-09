@@ -8,9 +8,11 @@ const httpResponseHandlerMiddleware = () => {
   const responseManager = new ResponseManager();
 
   const middlewareAfter = (request: any) => {
+    console.log('request', request.response)
     const { response } = request;
     const statusCode = response?.statusCode || HttpStatusCode.OK;
     const data = response?.data || response;
+    console.log('data', data)
     request.response = responseManager.handleResponse(statusCode, data);
   };
 
