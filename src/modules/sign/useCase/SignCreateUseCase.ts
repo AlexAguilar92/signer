@@ -5,7 +5,7 @@ import SignCreateUseCaseParams from "../domain/DTO/SignCreateUseCaseParams.dto";
 
 @injectable()
 export default class SignCreateUseCase implements UseCase<SignCreateUseCaseParams, string> {
-  port(port: SignCreateUseCaseParams): Promise<string> {
-    throw new Error("Method not implemented.");
+  async execute(port: SignCreateUseCaseParams): Promise<string> {
+    return '1'
   }
 }

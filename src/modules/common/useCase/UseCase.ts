@@ -11,5 +11,5 @@ export default interface UseCase<T, U> {
    * @updated 2022-08-05
    * @updatedBy Alexandro Aguilar
    */
-  port(port: T): Promise<U>
+  execute(port: T): Promise<U>
 }
