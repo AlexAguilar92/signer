@@ -12,10 +12,9 @@ import TYPES from '../../../../../src/types';
 
 const main = middy(async event => {
   const adapter: Adapter<SignCreateAdapterParams, string> = container.get<Adapter<SignCreateAdapterParams, string>>(TYPES.SignCreateAdapter);
-  adapter.execute(event.body);
-  // adapter.try()
+  const response = await adapter.execute(event.body);
   return formatJSONResponse(
-      '1',
+      response,
       HttpStatusCode.CREATED
   );
 });
