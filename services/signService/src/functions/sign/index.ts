@@ -9,10 +9,10 @@ export default {
         method: 'post',
         path: '/sign',
         cors: true,
-        authorizer: {
-          arn: '${ssm:sso_cognito_arn,"ssoCognitoArn"}',
-          name: '${self:custom.func_prefix}-authorizer'
-        },
+        // authorizer: {
+        //   arn: '${ssm:sso_cognito_arn,"ssoCognitoArn"}',
+        //   name: '${self:custom.func_prefix}-authorizer'
+        // },
       },
     },
   ],
