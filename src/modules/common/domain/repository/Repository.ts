@@ -1,3 +1,3 @@
-export default interface Repository<T> {
-  execute(port: T): Promise<T>
+export default interface Repository<T, U> {
+  execute(port: T): Promise<U>
 }
