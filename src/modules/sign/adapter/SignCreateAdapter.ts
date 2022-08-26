@@ -3,20 +3,29 @@ import TYPES from '../../../types';
 import Adapter from "../../common/adapter/Adapter";
 import UseCase from "../../common/useCase/UseCase";
 import SignCreateAdapterParams from "../domain/DTO/SignCreateAdapterParams.dto";
-import SignCreateUseCaseParams from '../domain/DTO/SignCreateUseCaseParams.dto';
 import { inject, injectable } from 'inversify'
+import Document from '../domain/entity/Document';
 
 @injectable()
 export default class SignCreateAdapter implements Adapter<SignCreateAdapterParams, string> {
-  private signCreateUseCase: UseCase<SignCreateUseCaseParams, string>;
+  private signCreateUseCase: UseCase<Partial<Document>, string>;
 
   constructor(
-    @inject(TYPES.SignCreateUseCase) signCreateUseCase: UseCase<SignCreateUseCaseParams, string>
+    @inject(TYPES.SignCreateUseCase) signCreateUseCase: UseCase<Partial<Document>, string>
   ) {
     this.signCreateUseCase = signCreateUseCase;
   }
 
   async execute(signCreateAdapterParams: SignCreateAdapterParams): Promise<string> {
-    return await this.signCreateUseCase.execute(signCreateAdapterParams)
+    const document: Partial<Document> = new Document(
+      signCreateAdapterParams.overrideMinimumRequiredLevel,
+      signCreateAdapterParams.fact,
+      signCreateAdapterParams.pipeline,
+      signCreateAdapterParams.template
+    );
+
+    const id = await this.signCreateUseCase.execute(document);
+
+    return id;
   }
 }
