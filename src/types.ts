@@ -2,6 +2,7 @@ const TYPES = {
 
   //#region DBConnectionManager
   DBConnectionManager: Symbol.for('DBConnectionManager'),
+  QuantumConfiguration: Symbol.for('QuantumConfiguration'),
   //#endregion
 
   //#region sign
