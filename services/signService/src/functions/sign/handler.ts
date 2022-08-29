@@ -3,8 +3,8 @@ import middy from '@middy/core';
 import httpJsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseHandlerMiddleware from '../../../../../src/middleware/httpResponseHandlerMiddleware';
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
-import Sign from '../../../../schemas/Sign.schema'
 import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
+import Sign from '../../../../../src/schemas/Sign.schema'
 import container from 'src/inversify.config';
 import Adapter from '../../../../../src/modules/common/adapter/Adapter';
 import SignCreateAdapterParams from '../../../../../src/modules/sign/domain/DTO/SignCreateAdapterParams.dto';

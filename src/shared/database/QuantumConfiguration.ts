@@ -26,28 +26,27 @@ export default class QuantumConfiguration {
     return this._maxConcurrentTransactions;
   }
 
-  get agentForQldb(): Agent {
-    return this._agentForQldb;
-  }
-
-  get serviceConfigurationOptions(): ClientConfiguration {
-    return this._serviceConfigurationOptions;
-  }
-
-  get retryLimit(): number {
-    return this._retryLimit;
-  }
-
   set maxConcurrentTransactions(maxConcurrentTransactions: number) {
     this._maxConcurrentTransactions = maxConcurrentTransactions;
+  }
+
+  get agentForQldb(): Agent {
+    return this._agentForQldb;
   }
 
   set agentForQldb(agentForQldb: Agent) {
     this._agentForQldb = agentForQldb;
   }
 
+  get serviceConfigurationOptions(): ClientConfiguration {
+    return this._serviceConfigurationOptions;
+  }
   set serviceConfigurationOptions(serviceConfigurationOptions: ClientConfiguration) {
     this._serviceConfigurationOptions = serviceConfigurationOptions
+  }
+
+  get retryLimit(): number {
+    return this._retryLimit;
   }
 
   set retryLimit(retryLimit: number) {
