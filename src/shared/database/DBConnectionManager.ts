@@ -10,7 +10,7 @@
 export default interface DBConnectionManager<T> {
   disconnect(): Promise<void>;
   // endTransaction(): Promise<void>;
-  getConnection(): Promise<T>;
+  connect(): Promise<T>;
   // getTransaction(): Promise<QueryRunner>;
   // getActiveConnection(): Promise<DataSource | QueryRunner>;
 }
