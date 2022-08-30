@@ -1,9 +1,7 @@
 import 'reflect-metadata';
 import { inject, injectable } from 'inversify';
 import UseCase from "../../common/useCase/UseCase";
-// import SignCreateUseCaseParams from "../domain/DTO/SignCreateUseCaseParams.dto";
 import TYPES from '../../../types';
-// import SignCreateRepositoryQuantum from '../domain/repository/SignCreateRepositoryQuantum';
 import Repository from '../../common/domain/repository/Repository';
 import Document from '../domain/entity/Document';
 
