@@ -3,7 +3,7 @@ import jwt_decode from 'jwt-decode';
 const httpRequestHandlerMiddleware = () => {
   const middlewareBefore = (request: any) => {
     // Remove 'Bearer' label
-    const bearerAuthorizationHeader = request.event.headers.Authorization || request.event.authorizationToken;
+    const bearerAuthorizationHeader = request.event.headers.Authorization || request.event.authorizationToken ||request.event.headers.authorization;
     const authorizationHeader = bearerAuthorizationHeader?.replace('Bearer ', '');
 
     // Token in header strategy
@@ -11,7 +11,7 @@ const httpRequestHandlerMiddleware = () => {
       const token = jwt_decode(authorizationHeader.trim());
       request.event.user = token['cognito:username'] || '';
     } catch (error) {
-      console.log(error);
+      console.log('token error', error);
       request.event.user = {};
     }
 
