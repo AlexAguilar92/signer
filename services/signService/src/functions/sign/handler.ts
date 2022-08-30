@@ -1,7 +1,9 @@
+import 'reflect-metadata';
 import { formatJSONResponse } from '@libs/api-gateway';
 import middy from '@middy/core';
 import httpJsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseHandlerMiddleware from '../../../../../src/middleware/httpResponseHandlerMiddleware';
+import httpRequestHandlerMiddleware from '../../../../../src/middleware/httpRequestHandlerMiddleware';
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
 import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
 import Sign from '../../../../../src/schemas/Sign.schema'
@@ -20,6 +22,7 @@ const main = middy(async event => {
 });
 
 main
+  .use(httpRequestHandlerMiddleware())
   .use(httpResponseHandlerMiddleware())
   .use(httpJsonBodyParser())
   .use(
