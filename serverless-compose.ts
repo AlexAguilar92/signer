@@ -3,15 +3,8 @@ const serverlessCompose = {
     nodejs: {
       path: 'layers/lib'
     },
-    servicea: {
-      path: 'services/outhouse',
-      dependsOn: ['nodejs'],
-      params: {
-        'commonLibs': '${nodejs.CommonLibsLambdaLayerQualifiedArn}',
-      }
-    },
-    serviceb: {
-      path: 'services/inhouse',
+    signerCreate: {
+      path: 'services/signService',
       dependsOn: ['nodejs'],
       params: {
         'commonLibs': '${nodejs.CommonLibsLambdaLayerQualifiedArn}',
