@@ -7,6 +7,7 @@ import UseCase from '../../../src/modules/common/useCase/UseCase';
 import Repository from '../../../src/modules/common/domain/repository/Repository';
 
 //#region Database
+import { QldbDriver } from 'amazon-qldb-driver-nodejs';
 import QuantumConfiguration from '../../../src/shared/database/QuantumConfiguration';
 import DBConnectionManagerQuantum from '../../../src/shared/database/DBConnectionManagerQuantum';
 //#endregion
@@ -21,13 +22,12 @@ import SignCreateAdapterParams from '../../../src/modules/sign/domain/DTO/SignCr
 import SignCreateUseCase from '../../../src/modules/sign/useCase/SignCreateUseCase'
 import SignCreateRepositoryQuantum from '../../../src/modules/sign/domain/repository/SignCreateRepositoryQuantum';
 import DBConnectionManager from '../../../src/shared/database/DBConnectionManager';
-import { QldbDriver } from 'amazon-qldb-driver-nodejs';
 //#endregion
 
 const container: Container = new Container();
 
 //#region Database
-container.bind<DBConnectionManager<QldbDriver>>(TYPES.QuantumConfiguration).to(DBConnectionManagerQuantum)
+container.bind<DBConnectionManager<QldbDriver>>(TYPES.DBConnectionManager).to(DBConnectionManagerQuantum)
 container.bind<QuantumConfiguration>(TYPES.QuantumConfiguration).to(QuantumConfiguration);
 //#endregion
 
