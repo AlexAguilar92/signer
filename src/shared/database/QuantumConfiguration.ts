@@ -1,6 +1,6 @@
 import { RetryConfig } from "amazon-qldb-driver-nodejs";
 import { ClientConfiguration } from "aws-sdk/clients/acm";
-import { Agent } from "http";
+import { Agent } from "https";
 import { injectable } from "inversify";
 
 @injectable()
@@ -17,7 +17,8 @@ export default class QuantumConfiguration {
     this._maxConcurrentTransactions = 10;
     this._agentForQldb = new Agent({
       keepAlive: true,
-      maxSockets: this._maxConcurrentTransactions
+      maxSockets: this._maxConcurrentTransactions,
+
     });
     this._serviceConfigurationOptions = {
       region: "us-east-1",
