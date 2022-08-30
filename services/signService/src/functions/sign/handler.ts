@@ -5,6 +5,7 @@ import httpJsonBodyParser from '@middy/http-json-body-parser';
 import httpResponseHandlerMiddleware from '../../../../../src/middleware/httpResponseHandlerMiddleware';
 import httpRequestHandlerMiddleware from '../../../../../src/middleware/httpRequestHandlerMiddleware';
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
+import 'reflect-metadata';
 import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
 import Sign from '../../../../../src/schemas/Sign.schema'
 import container from 'src/inversify.config';

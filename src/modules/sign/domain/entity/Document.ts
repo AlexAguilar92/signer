@@ -10,9 +10,10 @@ export default class Document extends DefaultEntity {
     overrideMinimumRequiredLevel: string,
     fact: object,
     pipeline: object,
-    template: string
+    template: string,
+    user: string
   ) {
-    super('alex');
+    super(user);
     this._overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
     this._fact = fact
     this._pipeline = pipeline
