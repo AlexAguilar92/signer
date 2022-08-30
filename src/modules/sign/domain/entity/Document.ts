@@ -1,10 +1,10 @@
 import DefaultEntity from "../../../common/domain/entity/DefaultEntity";
 
 export default class Document extends DefaultEntity {
-  private _overrideMinimumRequiredLevel: string;
-  private _fact: object;
-  private _pipeline: object;
-  private _template: string;
+  private overrideMinimumRequiredLevel: string;
+  private fact: object;
+  private pipeline: object;
+  private template: string;
 
   constructor(
     overrideMinimumRequiredLevel: string,
@@ -14,41 +14,41 @@ export default class Document extends DefaultEntity {
     user: string
   ) {
     super(user);
-    this._overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
-    this._fact = fact
-    this._pipeline = pipeline
-    this._template = Buffer.from(template).toString('base64')
+    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
+    this.fact = fact
+    this.pipeline = pipeline
+    this.template = Buffer.from(template).toString('base64')
   }
 
-  get overrideMinimumRequiredLevel() {
-    return this._overrideMinimumRequiredLevel;
+  getOverrideMinimumRequiredLevel() {
+    return this.overrideMinimumRequiredLevel;
   }
 
-  get fact() {
-    return this._fact;
+  getFact() {
+    return this.fact;
   }
 
-  get pipeline() {
-    return this._pipeline;
+  getPipeline() {
+    return this.pipeline;
   }
 
-  get template() {
-    return this._template;
+  getTemplate() {
+    return this.template;
   }
 
-  set overrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
-    this._overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
+  setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
+    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
   }
 
-  set fact(fact: object) {
-    this._fact = fact;
+  setFact(fact: object) {
+    this.fact = fact;
   }
 
-  set pipeline(pipeline: object) {
-    this._pipeline = pipeline;
+  setPipeline(pipeline: object) {
+    this.pipeline = pipeline;
   }
 
-  set template(template: string) {
-    this._template = template;
+  setTemplate(template: string) {
+    this.template = template;
   }
 }
