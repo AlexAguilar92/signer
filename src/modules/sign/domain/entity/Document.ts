@@ -12,7 +12,7 @@ export default class Document extends DefaultEntity {
     pipeline: object,
     template: string
   ) {
-    super('alex', 'alex');
+    super('alex');
     this._overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
     this._fact = fact
     this._pipeline = pipeline
