@@ -43,13 +43,15 @@ const serverlessConfiguration: AWS = {
     ]
   },
   custom: {
-    service: "servicea",
+    service: "signerCreate",
     stage: '${env:STAGE, "stage"}',
     func_prefix: "${self:custom.stage}-${self:custom.service}",
     esbuild: {
       bundle: true,
-      minify: false,
-      sourcemap: true,
+      // minify: false,
+      minifyWhitespace: true,
+      minifyIdentifiers: true,
+      sourcemap: true,//process.env.ENVIRONMENT === 'local',
       exclude: ['aws-sdk'],
       target: 'node14',
       define: { 'require.resolve': undefined },
