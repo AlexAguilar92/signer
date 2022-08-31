@@ -1,7 +1,6 @@
 import { QldbDriver, TransactionExecutor } from "amazon-qldb-driver-nodejs";
 import { inject, injectable } from "inversify";
 import DBConnectionManager from "../../../../shared/database/DBConnectionManager";
-import Log from "../../../../shared/utils/logger/implementation/Log";
 import TYPES from "../../../../types";
 import Repository from "../../../common/domain/repository/Repository";
 import Document from "../entity/Document";
