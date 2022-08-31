@@ -4,7 +4,7 @@ const serverlessCompose = {
       path: 'layers/lib'
     },
     register: {
-      path: 'services/signService',
+      path: 'services/registerService',
       dependsOn: ['nodejs'],
       params: {
         'commonLibs': '${nodejs.CommonLibsLambdaLayerQualifiedArn}',
