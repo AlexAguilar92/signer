@@ -7,7 +7,7 @@ import httpRequestHandlerMiddleware from '../../../../../src/middleware/httpRequ
 import {httpJoiValidatorMiddleware, VALIDATOR_TYPE} from '../../../../../src/middleware/httpJoiValidatorMiddleware'
 import 'reflect-metadata';
 import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
-import Sign from '../../../../../src/schemas/Sign.schema'
+import Registration from '../../../../../src/schemas/Registration.schema'
 import container from 'src/inversify.config';
 import Adapter from '../../../../../src/modules/common/adapter/Adapter';
 import SignCreateAdapterParams from '../../../../../src/modules/sign/domain/DTO/SignCreateAdapterParams.dto';
@@ -28,7 +28,7 @@ main
   .use(httpJsonBodyParser())
   .use(
     httpJoiValidatorMiddleware({
-      schema: Sign,
+      schema: Registration,
       type: VALIDATOR_TYPE.BODY,
     })
   );
