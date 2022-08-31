@@ -3,5 +3,6 @@ export default interface SignCreateAdapterParams {
   pipeline: object,
   fact: object,
   template: string,
+  overrides: object,
   user: string
 }
