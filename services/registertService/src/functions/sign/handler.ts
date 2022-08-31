@@ -10,7 +10,7 @@ import HttpStatusCode from '../../../../../src/shared/enums/httpStatusCode';
 import Registration from '../../../../../src/schemas/Registration.schema'
 import container from 'src/inversify.config';
 import Adapter from '../../../../../src/modules/common/adapter/Adapter';
-import SignCreateAdapterParams from '../../../../../src/modules/sign/domain/DTO/SignCreateAdapterParams.dto';
+import SignCreateAdapterParams from '../../../../../src/modules/register/domain/DTO/SignCreateAdapterParams.dto';
 import TYPES from '../../../../../src/types';
 
 const main = middy(async event => {

@@ -13,14 +13,14 @@ import DBConnectionManagerQuantum from '../../../src/shared/database/DBConnectio
 //#endregion
 
 //#region Entities
-import Document from '../../../src/modules/sign/domain/entity/Document';
+import Document from '../../../src/modules/register/domain/entity/Document';
 //#endregion
 
 //#region SignCreate
-import SignCreateAdapter from '../../../src/modules/sign/adapter/SignCreateAdapter';
-import SignCreateAdapterParams from '../../../src/modules/sign/domain/DTO/SignCreateAdapterParams.dto';
-import SignCreateUseCase from '../../../src/modules/sign/useCase/SignCreateUseCase'
-import SignCreateRepositoryQuantum from '../../../src/modules/sign/domain/repository/SignCreateRepositoryQuantum';
+import SignCreateAdapter from '../../../src/modules/register/adapter/SignCreateAdapter';
+import SignCreateAdapterParams from '../../../src/modules/register/domain/DTO/SignCreateAdapterParams.dto';
+import SignCreateUseCase from '../../../src/modules/register/useCase/SignCreateUseCase'
+import SignCreateRepositoryQuantum from '../../../src/modules/register/domain/repository/SignCreateRepositoryQuantum';
 import DBConnectionManager from '../../../src/shared/database/DBConnectionManager';
 //#endregion
 
