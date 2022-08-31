@@ -3,7 +3,7 @@ const serverlessCompose = {
     nodejs: {
       path: 'layers/lib'
     },
-    signerCreate: {
+    register: {
       path: 'services/signService',
       dependsOn: ['nodejs'],
       params: {
