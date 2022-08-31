@@ -7,7 +7,7 @@ export default {
     {
       http: {
         method: 'post',
-        path: '/sign',
+        path: '/register',
         cors: true,
         // authorizer: {
         //   arn: '${ssm:sso_cognito_arn,"ssoCognitoArn"}',
