@@ -1,23 +1,33 @@
 import { QldbDriver, TransactionExecutor } from "amazon-qldb-driver-nodejs";
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
+import DBConnectionManager from "../../../../shared/database/DBConnectionManager";
+import Log from "../../../../shared/utils/logger/implementation/Log";
+import TYPES from "../../../../types";
 import Repository from "../../../common/domain/repository/Repository";
 import Document from "../entity/Document";
 
 @injectable()
 export default class SignCreateRepositoryQuantum implements Repository<Partial<Document>, string> {
-  // constructor (
+  private dBConnectionManagerQuantum: DBConnectionManager<QldbDriver>;
 
-  // ) {
-
-  // }
-
+  constructor (
+    @inject(TYPES.DBConnectionManager) dBConnectionManagerQuantum: DBConnectionManager<QldbDriver>
+  ) {
+    this.dBConnectionManagerQuantum = dBConnectionManagerQuantum
+  }
+  
   async execute(document: Partial<Document>): Promise<string> {
-    // const driver: QldbDriver = new QldbDriver("quick-start");
-    await driver.executeLambda(async (txn: TransactionExecutor) => {
-      return (await txn.execute("INSERT INTO ");
-    })
-    const uuid = 'c0f0c88d-4e1e-49df-a9f1-a9968727d0c4';
-    console.log('document', document, Buffer.from(document.template, 'base64').toString('utf8'))
-    return uuid;
+    const connection = await this.dBConnectionManagerQuantum.connect();
+    try {
+      const result = await connection.executeLambda(async (txn: TransactionExecutor) => {
+        return await txn.execute("INSERT INTO Documents ?", document);
+      });
+      return result.getResultList().at(0).fields().at(0).at(1).toString();
+    } catch (error) {
+      console.log(error);
+      throw error;
+    } finally {
+      connection.close();
+    }
   }
 }
