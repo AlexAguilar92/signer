@@ -1,28 +1,28 @@
 export default class DefaultEntity {
-  private _createdBy: string;
-  private _active: boolean;
+  private createdBy: string;
+  private active: boolean;
 
   constructor (
     createdBy: string,
     active: boolean = true
   ) {
-    this._createdBy = createdBy;
-    this._active = active;
+    this.createdBy = createdBy;
+    this.active = active;
   }
 
-  get createdBy(): string {
-    return this._createdBy;
+  getCreatedBy(): string {
+    return this.createdBy;
   }
 
-  set createdBy(createdBy: string) {
-    this._createdBy = createdBy;
+  setCreatedBy(createdBy: string) {
+    this.createdBy = createdBy;
   }
 
-  get active(): boolean {
-    return this._active;
+  getActive(): boolean {
+    return this.active;
   }
 
-  set active(active: boolean) {
-    this._active = active;
+  setActive(active: boolean) {
+    this.active = active;
   }
 }
