@@ -22,7 +22,8 @@ export default class SignCreateAdapter implements Adapter<SignCreateAdapterParam
       signCreateAdapterParams.fact,
       signCreateAdapterParams.pipeline,
       signCreateAdapterParams.template,
-      signCreateAdapterParams.user
+      signCreateAdapterParams.overrides,
+      signCreateAdapterParams.user,
     );
 
     const id = await this.signCreateUseCase.execute(document);
