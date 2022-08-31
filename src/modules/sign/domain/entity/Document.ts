@@ -5,12 +5,14 @@ export default class Document extends DefaultEntity {
   private fact: object;
   private pipeline: object;
   private template: string;
+  private overrides: object;
 
   constructor(
     overrideMinimumRequiredLevel: string,
     fact: object,
     pipeline: object,
     template: string,
+    overrides: object,
     user: string
   ) {
     super(user);
@@ -18,6 +20,7 @@ export default class Document extends DefaultEntity {
     this.fact = fact
     this.pipeline = pipeline
     this.template = Buffer.from(template).toString('base64')
+    this.overrides = overrides
   }
 
   getOverrideMinimumRequiredLevel() {
@@ -36,6 +39,10 @@ export default class Document extends DefaultEntity {
     return this.template;
   }
 
+  getOverrides() {
+    return this.overrides;
+  }
+
   setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
     this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
   }
@@ -50,5 +57,9 @@ export default class Document extends DefaultEntity {
 
   setTemplate(template: string) {
     this.template = template;
+  }
+
+  setOverrides(overrides: object) {
+    this.overrides = overrides;
   }
 }
