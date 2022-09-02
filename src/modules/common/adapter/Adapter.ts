@@ -11,5 +11,5 @@ export default interface Adapter<T, U> {
    * @updated 2022-06-27
    * @updatedBy Alexandro Aguilar
    */
-  execute(port: T): Promise<U>
+  execute(port?: T): Promise<U>
 }
