@@ -1,1 +1,5 @@
-export { default as sign } from './sign';
+import register from '../functions/register'
+
+export default {
+  register,
+}

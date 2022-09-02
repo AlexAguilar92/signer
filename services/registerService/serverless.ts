@@ -1,5 +1,5 @@
 import type { AWS } from '@serverless/typescript';
-import sign from '@functions/sign';
+import functions from './src/functions';
 
 const serverlessConfiguration: AWS = {
   service: "${self:custom.service}",
@@ -35,7 +35,7 @@ const serverlessConfiguration: AWS = {
     }, 
   },
   // import the function via paths
-  functions: { sign },
+  functions,
   package: { 
     individually: true,
     patterns: [
