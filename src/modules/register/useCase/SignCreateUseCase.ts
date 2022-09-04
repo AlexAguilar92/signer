@@ -15,7 +15,11 @@ export default class SignCreateUseCase implements UseCase<Partial<Document>, str
     this.signCreateRepositoryQuantum = signCreateRepositoryQuantum;
   }
 
-  async execute(port: Partial<Document>): Promise<string> {
-    return await this.signCreateRepositoryQuantum.execute(port)
+  async execute(document: Partial<Document>): Promise<string> {
+    if(document.getId())
+      console.log('id')
+    console.log('SignCreateUseCase', document)
+    return 'yes'
+    // return await this.signCreateRepositoryQuantum.execute(document)
   }
 }
