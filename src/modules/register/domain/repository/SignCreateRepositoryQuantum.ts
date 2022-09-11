@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { QldbDriver, TransactionExecutor } from "amazon-qldb-driver-nodejs";
 import { inject, injectable } from "inversify";
 import DBConnectionManager from "../../../../shared/database/DBConnectionManager";

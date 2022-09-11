@@ -1,4 +1,4 @@
-import { handlerPath } from '@libs/handler-resolver';
+import { handlerPath } from "../../libs/handler-resolver";
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
@@ -6,8 +6,8 @@ export default {
   events: [
     {
       http: {
-        method: 'put',
-        path: '/sign',
+        method: 'get',
+        path: '/register',
         cors: true,
         // authorizer: {
         //   arn: '${ssm:sso_cognito_arn,"ssoCognitoArn"}',
