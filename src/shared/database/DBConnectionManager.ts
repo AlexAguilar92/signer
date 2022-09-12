@@ -1,6 +1,7 @@
 /**
- * @interface DBConnectionHelper
- * @description Database connection helper
+ * @interface DBConnectionManager
+ * @description Abstracts connections from ORMS or any other connection tool.
+ * @template <T> Connection type or driver.
  * @author Alexandro Aguilar
  * @created 2020-03-13
  * @updated 2020-03-13
