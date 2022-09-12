@@ -21,6 +21,7 @@ import SignCreateAdapter from '../../../../../src/modules/register/adapter/SignC
 import SignCreateAdapterParams from '../../../../../src/modules/register/domain/DTO/SignCreateAdapterParams.dto';
 import SignCreateUseCase from '../../../../../src/modules/register/useCase/SignCreateUseCase'
 import SignCreateRepositoryQuantum from '../../../../../src/modules/register/domain/repository/SignCreateRepositoryQuantum';
+import SignFindOneRepositoryQuantum from '../../../../../src/modules/register/domain/repository/SignFindOneRepositoryQuantum'
 import DBConnectionManager from '../../../../../src/shared/database/DBConnectionManager';
 //#endregion
 
@@ -34,7 +35,8 @@ container.bind<QuantumConfiguration>(TYPES.QuantumConfiguration).to(QuantumConfi
 //#region SignCreate
 container.bind<Adapter<SignCreateAdapterParams, string>>(TYPES.SignCreateAdapter).to(SignCreateAdapter);
 container.bind<UseCase<Partial<Document>, string>>(TYPES.SignCreateUseCase).to(SignCreateUseCase);
-container.bind<Repository<Document, string>>(TYPES.SignCreateRepository).to(SignCreateRepositoryQuantum);
+container.bind<Repository<Document, string>>(TYPES.SignCreateRepositoryQuantum).to(SignCreateRepositoryQuantum);
+container.bind<Repository<string, any>>(TYPES.SignFindOneRepositoryQuantum).to(SignFindOneRepositoryQuantum);
 //#endregion
 
 export default container;
