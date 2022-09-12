@@ -19,7 +19,7 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
     const connection = await this.dBConnectionManagerQuantum.connect();
     try {
       const result = await connection.executeLambda(async (txn: TransactionExecutor) => {
-        return await txn.execute(`SELECT * FROM _ql_committed_Documents as doc WHERE doc.metadata.id = ${id}`);
+        return await txn.execute('SELECT * FROM _ql_committed_Documents as doc WHERE doc.metadata.id = ?', id);
       });
 
       return result;
