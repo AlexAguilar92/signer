@@ -8,12 +8,12 @@ const TYPES = {
   //#region RegisterCreate
   SignCreateAdapter: Symbol.for('SignCreateAdapter'),
   SignCreateUseCase: Symbol.for('SignCreateUseCase'),
-  SignCreateRepository: Symbol.for('SignCreateRepository'),
+  SignCreateRepositoryQuantum: Symbol.for('SignCreateRepositoryQuantum'),
   //#endregion
 
   //#region RegisterFindOne
   SignFindOneAdapter: Symbol.for('SignFindOneAdapter'),
-  SignFindOneRepository: Symbol.for('SignFindOneRepository')
+  SignFindOneRepositoryQuantum: Symbol.for('SignFindOneRepositoryQuantum')
   //#endregion
 
 }
