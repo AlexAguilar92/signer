@@ -1,7 +1,7 @@
 export default interface SignCreateAdapterParams {
   id?: string;
   overrideMinimumRequiredLevel: string;
-  pipeline: object;
+  pipeline: string;
   fact: object;
   overrides: object;
   user: string;

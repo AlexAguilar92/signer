@@ -1,66 +1,91 @@
-import DefaultEntity from "../../../common/domain/entity/DefaultEntity";
+import Metadata from "../../../common/domain/entity/Metadata";
+import DocumentData from "./DocumentData";
 
-export default class Document extends DefaultEntity {
-  private overrideMinimumRequiredLevel: string;
-  private fact: object;
-  private pipeline: object;
-  private overrides: object;
-  private application: string;
+/**
+ * TODO: Split into object value and inherit from Entity which implements Metadata and a generic
+ */
+export default class Document {
+  private data: DocumentData;
+  private metadata?: Metadata;
 
   constructor(
     overrideMinimumRequiredLevel: string,
     fact: object,
-    pipeline: object,
+    pipeline: string,
     overrides: object,
     user: string,
     application: string,
-    id?: string
+    id?: string,
+    version?: number,
+    txTime?: string,
+    txId?: string,
+    status = true
   ) {
-    super(user, id);
-    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
-    this.fact = fact
-    this.pipeline = pipeline
-    this.overrides = overrides
-    this.application = application
+
+    this.data = new DocumentData (
+      overrideMinimumRequiredLevel,
+      fact,
+      pipeline,
+      overrides,
+      application,
+      user,
+      status
+    )
+
+    this.metadata = new Metadata (
+      id,
+      version,
+      txTime,
+      txId
+    )
+
   }
 
-  getOverrideMinimumRequiredLevel() {
-    return this.overrideMinimumRequiredLevel;
+  getData(): DocumentData {
+    return this.data;
   }
 
-  getFact() {
-    return this.fact;
+  getMetadata(): Metadata {
+    return this.metadata;
   }
 
-  getPipeline() {
-    return this.pipeline;
-  }
+  // getOverrideMinimumRequiredLevel() {
+  //   return this.overrideMinimumRequiredLevel;
+  // }
 
-  getOverrides() {
-    return this.overrides;
-  }
+  // getFact() {
+  //   return this.fact;
+  // }
 
-  getApplication() {
-    return this.application;
-  }
+  // getPipeline() {
+  //   return this.pipeline;
+  // }
 
-  setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
-    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
-  }
+  // getOverrides() {
+  //   return this.overrides;
+  // }
 
-  setFact(fact: object) {
-    this.fact = fact;
-  }
+  // getApplication() {
+  //   return this.application;
+  // }
 
-  setPipeline(pipeline: object) {
-    this.pipeline = pipeline;
-  }
+  // setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
+  //   this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
+  // }
 
-  setOverrides(overrides: object) {
-    this.overrides = overrides;
-  }
+  // setFact(fact: object) {
+  //   this.fact = fact;
+  // }
 
-  setApplication(application: string) {
-    this.application = application;
-  }
+  // setPipeline(pipeline: object) {
+  //   this.pipeline = pipeline;
+  // }
+
+  // setOverrides(overrides: object) {
+  //   this.overrides = overrides;
+  // }
+
+  // setApplication(application: string) {
+  //   this.application = application;
+  // }
 }
