@@ -18,16 +18,31 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
     this.dBConnectionManagerQuantum = dBConnectionManagerQuantum;
   }
   
-  async execute(id?: string): Promise<any> {
+  async execute(id?: string): Promise<Document> {
     const connection = await this.dBConnectionManagerQuantum.connect();
     try {
       const result = await connection.executeLambda(async (txn: TransactionExecutor) => {
         return await txn.execute('SELECT * FROM _ql_committed_Documents as doc WHERE doc.metadata.id = ?', id);
       });
-      const data: DocumentData = JSON.parse(JSON.stringify(result.getResultList().at(0).fields().at(2).at(1)));
-      const metadata: Metadata = JSON.parse(JSON.stringify(result.getResultList().at(0).fields().at(3).at(1)));
-      console.log('SignFindOneRepositoryQuantum', data);
-      console.log('SignFindOneRepositoryQuantum', metadata);
+
+      const unformattedData = JSON.parse(JSON.stringify(result.getResultList().at(0).fields().at(2).at(1)));
+      const unformattedMetadata = JSON.parse(JSON.stringify(result.getResultList().at(0).fields().at(3).at(1)));
+
+      const data: DocumentData = new DocumentData(
+        unformattedData.overrideMinimumRequiredLevel,
+        unformattedData.fact,
+        unformattedData.pipeline,
+        unformattedData.overrides,
+        unformattedData.application
+      );
+
+      const metadata: Metadata = new Metadata(
+        unformattedMetadata.id,
+        unformattedMetadata.version,
+        unformattedMetadata.txTime,
+        unformattedMetadata.txId
+      );
+
       const document = new Document(
         data.getOverrideMinimumRequiredLevel(),
         data.getFact(),
@@ -38,9 +53,12 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
         metadata.getId(),
         metadata.getVersion(),
         metadata.getTxTime(),
-        metadata.getTxId()
-      )
-      return result;
+        metadata.getTxId(),
+        data.getStatus()
+      );
+
+      console.log('document', document)
+      return document;
     } catch(error) {
       console.log(error);
       throw error;
