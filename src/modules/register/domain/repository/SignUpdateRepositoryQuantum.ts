@@ -19,7 +19,7 @@ export default class SignUpdateRepositoryQuantum implements Repository<Document,
     const connection = await this.dBConnectionManagerQuantum.connect();
     try {
       const result = await connection.executeLambda(async (txn: TransactionExecutor) => {
-        return await txn.execute('UPDATE _ql_committed_Documents SET ? WHERE doc.metadata.id = ?', document, document.getId());
+        return await txn.execute('UPDATE _ql_committed_Documents SET ? WHERE doc.metadata.id = ?', document, document.getMetadata().getId());
       });
       console.log('SignUpdateRepositoryQuantum', result)
       return document;
