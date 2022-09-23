@@ -57,7 +57,7 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
         data.getStatus()
       );
 
-      console.log('document', document)
+      // console.log('document', document)
       return document;
     } catch(error) {
       console.log(error);
