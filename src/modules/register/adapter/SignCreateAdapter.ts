@@ -7,16 +7,16 @@ import { inject, injectable } from 'inversify'
 import Document from '../domain/entity/Document';
 
 @injectable()
-export default class SignCreateAdapter implements Adapter<SignCreateAdapterParams, string> {
-  private signCreateUseCase: UseCase<Partial<Document>, string>;
+export default class SignCreateAdapter implements Adapter<SignCreateAdapterParams, Document | string> {
+  private signCreateUseCase: UseCase<Partial<Document>, Document | string>;
 
   constructor(
-    @inject(TYPES.SignCreateUseCase) signCreateUseCase: UseCase<Partial<Document>, string>
+    @inject(TYPES.SignCreateUseCase) signCreateUseCase: UseCase<Partial<Document>, Document | string>
   ) {
     this.signCreateUseCase = signCreateUseCase;
   }
 
-  async execute(signCreateAdapterParams: SignCreateAdapterParams): Promise<string> {
+  async execute(signCreateAdapterParams: SignCreateAdapterParams): Promise<Document | string> {
     const document: Partial<Document> = new Document(
       signCreateAdapterParams.overrideMaximumRequiredLevel,
       signCreateAdapterParams.fact,

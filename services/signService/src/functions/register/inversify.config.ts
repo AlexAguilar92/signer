@@ -33,8 +33,8 @@ container.bind<QuantumConfiguration>(TYPES.QuantumConfiguration).to(QuantumConfi
 //#endregion
 
 //#region SignCreate
-container.bind<Adapter<SignCreateAdapterParams, string>>(TYPES.SignCreateAdapter).to(SignCreateAdapter);
-container.bind<UseCase<Partial<Document>, string>>(TYPES.SignCreateUseCase).to(SignCreateUseCase);
+container.bind<Adapter<SignCreateAdapterParams, Document | string>>(TYPES.SignCreateAdapter).to(SignCreateAdapter);
+container.bind<UseCase<Partial<Document>, Document | string>>(TYPES.SignCreateUseCase).to(SignCreateUseCase);
 container.bind<Repository<Document, string>>(TYPES.SignCreateRepositoryQuantum).to(SignCreateRepositoryQuantum);
 container.bind<Repository<string, Document>>(TYPES.SignFindOneRepositoryQuantum).to(SignFindOneRepositoryQuantum);
 //#endregion
