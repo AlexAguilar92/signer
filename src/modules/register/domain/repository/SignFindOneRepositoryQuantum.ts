@@ -29,7 +29,7 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
       const unformattedMetadata = JSON.parse(JSON.stringify(result.getResultList().at(0).fields().at(3).at(1)));
 
       const data: DocumentData = new DocumentData(
-        unformattedData.overrideMinimumRequiredLevel,
+        unformattedData.overrideMaximumRequiredLevel,
         unformattedData.fact,
         unformattedData.pipeline,
         unformattedData.overrides,

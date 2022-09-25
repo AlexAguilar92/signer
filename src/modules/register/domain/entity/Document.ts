@@ -9,7 +9,7 @@ export default class Document {
   private metadata?: Metadata;
 
   constructor(
-    overrideMinimumRequiredLevel: string,
+    overrideMaximumRequiredLevel: string,
     fact: object,
     pipeline: string,
     overrides: object,
@@ -23,7 +23,7 @@ export default class Document {
   ) {
 
     this.data = new DocumentData (
-      overrideMinimumRequiredLevel,
+      overrideMaximumRequiredLevel,
       fact,
       pipeline,
       overrides,
@@ -50,7 +50,7 @@ export default class Document {
   }
 
   // getOverrideMinimumRequiredLevel() {
-  //   return this.overrideMinimumRequiredLevel;
+  //   return this.overrideMaximumRequiredLevel;
   // }
 
   // getFact() {
@@ -69,8 +69,8 @@ export default class Document {
   //   return this.application;
   // }
 
-  // setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
-  //   this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
+  // setOverrideMinimumRequiredLevel(overrideMaximumRequiredLevel: string) {
+  //   this.overrideMaximumRequiredLevel = overrideMaximumRequiredLevel;
   // }
 
   // setFact(fact: object) {

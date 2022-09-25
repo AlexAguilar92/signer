@@ -5,7 +5,7 @@ import Document from "../entity/Document";
 export default class SignMapperService extends MapperService<Document, DocumentDTO> {
   public map(entity: Document): DocumentDTO {
     return {
-      overrideMinimumRequiredLevel: entity.,
+      overrideMaximumRequiredLevel: entity.,
       fact: object,
       pipeline: object,
       template: string

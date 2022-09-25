@@ -18,7 +18,7 @@ export default class SignCreateAdapter implements Adapter<SignCreateAdapterParam
 
   async execute(signCreateAdapterParams: SignCreateAdapterParams): Promise<string> {
     const document: Partial<Document> = new Document(
-      signCreateAdapterParams.overrideMinimumRequiredLevel,
+      signCreateAdapterParams.overrideMaximumRequiredLevel,
       signCreateAdapterParams.fact,
       signCreateAdapterParams.pipeline,
       signCreateAdapterParams.overrides,

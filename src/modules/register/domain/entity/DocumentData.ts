@@ -1,7 +1,7 @@
 import { bool } from "aws-sdk/clients/signer";
 
 export default class DocumentData {
-  private overrideMinimumRequiredLevel: string;
+  private overrideMaximumRequiredLevel: string;
   private fact: object;
   private pipeline: string;
   private overrides: object;
@@ -11,7 +11,7 @@ export default class DocumentData {
   private status: bool;
 
   constructor (
-    overrideMinimumRequiredLevel: string,
+    overrideMaximumRequiredLevel: string,
     fact: object,
     pipeline: string,
     overrides: object,
@@ -19,7 +19,7 @@ export default class DocumentData {
     signedBy?: string,
     status = true,
   ) {
-    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel
+    this.overrideMaximumRequiredLevel = overrideMaximumRequiredLevel
     this.fact = fact
     this.pipeline = pipeline
     this.overrides = overrides
@@ -29,11 +29,11 @@ export default class DocumentData {
   }
 
   getOverrideMinimumRequiredLevel() {
-    return this.overrideMinimumRequiredLevel;
+    return this.overrideMaximumRequiredLevel;
   }
   
-  setOverrideMinimumRequiredLevel(overrideMinimumRequiredLevel: string) {
-    this.overrideMinimumRequiredLevel = overrideMinimumRequiredLevel;
+  setOverrideMinimumRequiredLevel(overrideMaximumRequiredLevel: string) {
+    this.overrideMaximumRequiredLevel = overrideMaximumRequiredLevel;
   }
 
   getFact(): object {

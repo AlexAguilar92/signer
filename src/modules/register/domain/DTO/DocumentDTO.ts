@@ -1,7 +1,7 @@
 import DefaultEntityDTO from "../../../common/domain/DTO/DefaultEntityDTO";
 
 export default interface DocumentDTO extends DefaultEntityDTO {
-  overrideMinimumRequiredLevel: string,
+  overrideMaximumRequiredLevel: string,
   fact: object,
   pipeline: object,
   template: string
