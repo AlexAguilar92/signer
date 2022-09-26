@@ -28,11 +28,11 @@ export default class DocumentData {
     this.status = status
   }
 
-  getOverrideMinimumRequiredLevel() {
+  getOverrideMaximumRequiredLevel() {
     return this.overrideMaximumRequiredLevel;
   }
   
-  setOverrideMinimumRequiredLevel(overrideMaximumRequiredLevel: string) {
+  setOverrideMaximumRequiredLevel(overrideMaximumRequiredLevel: string) {
     this.overrideMaximumRequiredLevel = overrideMaximumRequiredLevel;
   }
 
