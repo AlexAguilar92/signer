@@ -44,7 +44,7 @@ export default class SignFindOneRepositoryQuantum implements Repository<string, 
       );
 
       const document = new Document(
-        data.getOverrideMinimumRequiredLevel(),
+        data.getOverrideMaximumRequiredLevel(),
         data.getFact(),
         data.getPipeline(),
         data.getOverrides(),
