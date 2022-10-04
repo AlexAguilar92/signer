@@ -23,6 +23,7 @@ export default class SignCreateRepositoryQuantum implements Repository<Partial<D
       const result = await connection.executeLambda(async (txn: TransactionExecutor) => {
         return await txn.execute("INSERT INTO Documents ?", document.getData());
       });
+      // console.log('SignCreateRepositoryQuantum result', result);
       return result.getResultList().at(0).fields().at(0).at(1).toString();
     } catch (error) {
       console.log('SignCreateRepositoryQuantum error', error);
