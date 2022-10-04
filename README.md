@@ -1,4 +1,40 @@
-# Serverless - AWS Node.js Typescript
+# Signer - AWS Node.js Typescript
+
+```javascript
+{
+  "id": "6bs0v5ZmuPA9KQEVFmZn9g",
+  "fact": {
+    "saleType": "NEW",
+    "rateCode": "semana_incentivo",
+    "market": "national",
+    "splice": 0,
+    "staying": 0,
+    "travellingWithAssociate": false,
+    "affiliationLevel": "associate",
+    "amount": 5000,
+    "percentage": 10,
+    "downPayment": 0,
+    "maxDaySpan": 100,
+    "level": {
+      "code": 100
+    }
+  },
+  "overrideMaximumRequiredLevel": "N4",
+  "pipeline": "1",
+  "overrides": {
+    "maxDaySpan2": {
+      "level": "N3",
+      "description": "Días maximos para pago de enganche"
+    },
+    "maxDaySpan": {
+      "level": "N3",
+      "description": "Días maximos para pago de enganche"
+    }
+  },
+  "application": "1"
+}
+```
+`FskfHI1hqCyHaH28oygaUa`
 
 This project has been generated using the `aws-nodejs-typescript` template from the [Serverless framework](https://www.serverless.com/).
 
