@@ -10,6 +10,7 @@ import Repository from '../../../../../src/modules/common/domain/repository/Repo
 import { QldbDriver } from 'amazon-qldb-driver-nodejs';
 import QuantumConfiguration from '../../../../../src/shared/database/QuantumConfiguration';
 import DBConnectionManagerQuantum from '../../../../../src/shared/database/DBConnectionManagerQuantum';
+import DBConnectionManager from '../../../../../src/shared/database/DBConnectionManager';
 //#endregion
 
 //#region Entities
@@ -22,7 +23,7 @@ import SignCreateAdapterParams from '../../../../../src/modules/register/domain/
 import SignCreateUseCase from '../../../../../src/modules/register/useCase/SignCreateUseCase'
 import SignCreateRepositoryQuantum from '../../../../../src/modules/register/domain/repository/SignCreateRepositoryQuantum';
 import SignFindOneRepositoryQuantum from '../../../../../src/modules/register/domain/repository/SignFindOneRepositoryQuantum'
-import DBConnectionManager from '../../../../../src/shared/database/DBConnectionManager';
+import SignUpdateRepositoryQuantum from '../../../../../src/modules/register/domain/repository/SignUpdateRepositoryQuantum';
 //#endregion
 
 const container: Container = new Container();
@@ -37,6 +38,7 @@ container.bind<Adapter<SignCreateAdapterParams, Document | string>>(TYPES.SignCr
 container.bind<UseCase<Partial<Document>, Document | string>>(TYPES.SignCreateUseCase).to(SignCreateUseCase);
 container.bind<Repository<Document, string>>(TYPES.SignCreateRepositoryQuantum).to(SignCreateRepositoryQuantum);
 container.bind<Repository<string, Document>>(TYPES.SignFindOneRepositoryQuantum).to(SignFindOneRepositoryQuantum);
+container.bind<Repository<Document, Document>>(TYPES.SignUpdateRepositoryQuantum).to(SignUpdateRepositoryQuantum);
 //#endregion
 
 export default container;

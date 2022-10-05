@@ -13,8 +13,10 @@ const TYPES = {
 
   //#region RegisterFindOne
   SignFindOneAdapter: Symbol.for('SignFindOneAdapter'),
-  SignFindOneRepositoryQuantum: Symbol.for('SignFindOneRepositoryQuantum')
+  SignFindOneRepositoryQuantum: Symbol.for('SignFindOneRepositoryQuantum'),
   //#endregion
+
+  SignUpdateRepositoryQuantum: Symbol.for('SignUpdateRepositoryQuantum'),
 
 }
 
