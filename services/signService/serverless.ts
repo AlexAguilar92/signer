@@ -7,11 +7,15 @@ const serverlessConfiguration: AWS = {
   plugins: [
     'serverless-esbuild',
     'serverless-offline',
+    'serverless-plugin-tracing'
   ],
   useDotenv: true,
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
+    tracing: {
+      lambda: true,
+    },
     apiGateway: {
       restApiId: '${env:ApiGatewayId, "ApiGatewayId"}',
       restApiRootResourceId: '${env:ApiGatewayResource, "ApiGatewayResource"}',
@@ -29,6 +33,15 @@ const serverlessConfiguration: AWS = {
     iam: {
       role: '${env:iamRole, "iamRole"}',
     },
+    iamRoleStatements: [
+      {
+        Effect: "Allow",
+        Action: [
+          "xray:PutTraceSegments",
+          "xray:PutTelemetryRecords"
+        ]
+      }
+    ],
     vpc: {
       securityGroupIds: { "Fn::Split": [",", '${ssm:securityGroupIds, "SECURITY_GROUP_IDS"}'] },
       subnetIds: { "Fn::Split": [",", '${ssm:subnetIds, "SUBNETS_IDS"}'] },
