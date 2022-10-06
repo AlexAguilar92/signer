@@ -28,7 +28,7 @@ const serverlessConfiguration: AWS = {
       '${param:commonLibs, "commonLibs"}',
     ],
     deploymentBucket: {
-      name: '${ssm:s3_bucket_deploy_sls, "s3BucketDeploySls"}',
+      name: '${ssm:s3_bucket_deploy_sls, "s3-bucket-deploy-sls"}',
     },
     iam: {
       role: '${env:iamRole, "iamRole"}',
@@ -39,13 +39,16 @@ const serverlessConfiguration: AWS = {
         Action: [
           "xray:PutTraceSegments",
           "xray:PutTelemetryRecords"
+        ],
+        Resource: [
+          "*"
         ]
       }
     ],
-    vpc: {
-      securityGroupIds: { "Fn::Split": [",", '${ssm:securityGroupIds, "SECURITY_GROUP_IDS"}'] },
-      subnetIds: { "Fn::Split": [",", '${ssm:subnetIds, "SUBNETS_IDS"}'] },
-    }, 
+    // vpc: {
+    //   securityGroupIds: { "Fn::Split": [",", '${ssm:securityGroupIds, "SECURITY_GROUP_IDS"}'] },
+    //   subnetIds: { "Fn::Split": [",", '${ssm:subnetIds, "SUBNETS_IDS"}'] },
+    // }, 
   },
   // import the function via paths
   functions,
