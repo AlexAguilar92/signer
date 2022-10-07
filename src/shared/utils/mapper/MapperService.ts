@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import IMapperService from './Mapper';
+import Mapper from './Mapper';
 
 /**
  * @abstract @class MapperService
@@ -11,7 +11,7 @@ import IMapperService from './Mapper';
  */
 
 @injectable()
-export default abstract class MapperService<S, T> implements IMapperService<S, T> {
+export default abstract class MapperService<S, T> implements Mapper<S, T> {
   protected abstract map(entity: S): T;
 
   transform(entity: S): T;

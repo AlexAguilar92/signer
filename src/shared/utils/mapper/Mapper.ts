@@ -1,5 +1,5 @@
 /**
- * @interface IMapperService
+ * @interface Mapper
  * @template S
  * @template T
  * @description interface that defines the methods that a mapper service must implement
