@@ -1,6 +1,10 @@
 import Metadata from "../../../common/domain/entity/Metadata";
 import DocumentData from "./DocumentData";
 
+interface DocumentParams {
+
+}
+
 /**
  * TODO: Split into object value and inherit from Entity which implements Metadata and a generic
  */
@@ -9,12 +13,12 @@ export default class Document {
   private metadata?: Metadata;
 
   constructor(
-    overrideMaximumRequiredLevel: string,
-    fact: object,
-    pipeline: string,
-    overrides: object,
-    user: string,
-    application: string,
+    createdBy: string,
+    overrideMaximumRequiredLevel?: string,
+    fact?: object,
+    pipeline?: string,
+    overrides?: object,
+    application?: string,
     id?: string,
     version?: number,
     txTime?: string,
@@ -22,15 +26,15 @@ export default class Document {
     status = true
   ) {
 
-    this.data = new DocumentData (
+    this.data = new DocumentData ({
       overrideMaximumRequiredLevel,
       fact,
       pipeline,
       overrides,
       application,
-      user,
+      createdBy,
       status
-    )
+    })
 
     this.metadata = new Metadata (
       id,

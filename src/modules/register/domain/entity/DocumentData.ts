@@ -1,5 +1,15 @@
 import { bool } from "aws-sdk/clients/signer";
 
+type DocumentDataSign = {
+  overrideMaximumRequiredLevel: string,
+  fact: object,
+  pipeline: string,
+  overrides: object,
+  application: string,
+  createdBy?: string,
+  status?: boolean,
+}
+
 export default class DocumentData {
   private overrideMaximumRequiredLevel: string;
   private fact: object;
@@ -10,22 +20,22 @@ export default class DocumentData {
   private application: string;
   private status: bool;
 
-  constructor (
-    overrideMaximumRequiredLevel: string,
-    fact: object,
-    pipeline: string,
-    overrides: object,
-    application: string,
-    signedBy?: string,
-    status = true,
-  ) {
-    this.overrideMaximumRequiredLevel = overrideMaximumRequiredLevel
-    this.fact = fact
-    this.pipeline = pipeline
-    this.overrides = overrides
-    this.application = application
-    this.signedBy = signedBy
-    this.status = status
+  constructor(documentParams: DocumentDataSign);
+  constructor (documentParams: string);
+  constructor(documentParams: DocumentDataSign | string) {
+    if (typeof documentParams === 'string') {
+      this.signedBy;
+    }
+    else {
+      this.overrideMaximumRequiredLevel = documentParams.overrideMaximumRequiredLevel;
+      this.fact = documentParams.fact;
+      this.pipeline = documentParams.pipeline;
+      this.overrides = documentParams.overrides;
+      this.application = documentParams.application;
+      this.createdBy = documentParams.createdBy;
+      this.status = documentParams.status ?? true;
+    }
+    
   }
 
   getOverrideMaximumRequiredLevel() {
