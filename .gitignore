@@ -11,3 +11,5 @@ jspm_packages
 .build
 
 .env
+
+.DS_Store
