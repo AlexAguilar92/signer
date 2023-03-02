@@ -13,7 +13,7 @@
     "outDir": "lib",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "serverless.ts"],
+  "include": ["**/src/**/*.ts", "serverless.ts"],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",
